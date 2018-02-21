@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<style type="text/css">
+header, footer {
+	padding: 1em;
+	color: white;
+	background-color: #4b42f4;
+	clear: left;
+	text-align: center;
+	font-stretch: 12;
+	font-size-adjust:
+}
+
+a {
+	text-decoration: none;
+	color: #4b42f4;
+}
+
+.vikram {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+input[type=submit] {
+	width: 40%;
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+input[type=submit]:hover {
+	background-color: #45a049;
+}
+
+table {
+	width: 400px;
+	margin: 0 auto;
+}
+</style>
+<body>
+	<form action="LoginServlet" method="post">
+		<header>
+			<h1>Login In To Your Account</h1>
+		</header>
+		<table>
+			<tr>
+				<td><h2>Login to your account</h2></td>
+			</tr>
+			<tr>
+				<td><input type="text" placeholder="UserId" name="luser"
+					class="vikram" required="required"></td>
+			</tr>
+			<tr>
+				<td><input type="password" placeholder="Password" name="lpass"
+					class="vikram" required="required"></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Login !!"></td>
+			</tr>
+			<tr>
+				<td><h4>
+						New User !! <a href="index.html">SignUp</a> <br>
+						<br> Forgot Password !! <a href="ForgetPassword.jsp">Forgot
+							Password</a>
+					</h4></td>
+			</tr>
+			<tr>
+				<td><a href="/RedirectUrl"><img src="GoogleIcon.png" alt="Sign With Google" width="150" height="30""></a></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

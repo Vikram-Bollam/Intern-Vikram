@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<style type="text/css">
+header, footer {
+    padding: 1em;
+    color: white;
+    background-color: #4b42f4;
+    clear: left;
+    text-align: center;
+    font-stretch: 12;
+    font-size-adjust:
+}
+
+.vikram {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 40%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+table {
+    width: 400px;
+    margin: 0 auto;
+}
+</style>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Hello App Engine</title>
+<script type="text/javascript" src="SearchUser.js"></script>
+</head>
+<body>
+    <header>
+    <h1>Register Your Business !!!</h1>
+    </header>
+    <form action="saloonproject" method="post"><br>
+        <table>
+            <tr>
+                <td><input type="text" placeholder="Your Name" name="pname"
+                    class="vikram" pattern=".{4,}"
+                    title="Name Should be Six or more characters" required="required"></td>
+            </tr>
+            <tr>
+                <td><input type="email" placeholder="Your EMail" name="email"
+                    class="vikram" required="required"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Your Business Name"
+                    name="bname" class="vikram" pattern=".{4,}"
+                    title="Business Name Should be Six or more characters" required="required"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="UserId" id="findUserName"
+                    onblur="findUser()" name="userid" class="vikram" pattern=".{4,}"
+                    title="Six or more characters" required="required"></td>
+            </tr>
+            <tr>
+                <td><p id="demo"></p></td>
+            </tr>
+            <tr>
+                <td><input type="password" placeholder="Password" name="pass"
+                    class="vikram" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
+                    title="Password (UpperCase, LowerCase and Number)" required="required"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Phone Number" name="phone"
+                    class="vikram" pattern="[7|8|9][0-9]{9}"
+                    title="Should start with [7,8,9] and 10 numbers"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Sign Up"></td>
+            </tr>
+            <tr><td><h4>Already Have an Account  <a href="Login.html">Login</h4></td></tr>
+        </table>
+    </form>
+</body>
+</html>

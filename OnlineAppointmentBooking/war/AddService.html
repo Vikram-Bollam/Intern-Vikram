@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<style type="text/css">
+header, footer {
+	padding: 1em;
+	color: white;
+	background-color: #99d6ff;
+	clear: left;
+	text-align: center;
+	font-stretch: 12;
+	font-size-adjust:
+}
+
+input[type=text] {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+input[type=submit] {
+	width: 40%;
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+input[type=submit]:hover {
+	background-color: #45a049;
+}
+
+table {
+	width: 400px;
+	margin: 0 auto;
+}
+</style>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="Validation.js"></script>
+<script>
+	$(function() {
+		$("#includedContent").load("Home.jsp");
+	});
+</script>
+
+</head>
+<body>
+	<div id="includedContent"></div>
+	<form action="AddService" method="post">
+		<br> <br>
+		<table>
+			<tr>
+				<td><h1>Add Your New Service!!</h1></td>
+			</tr>
+			<tr>
+				<td><input type="text" placeholder="Service Name"
+					name="serviceName" required="required"></td>
+			</tr>
+			<tr>
+				<td><input type="text" placeholder="Service Time"
+					onkeypress="return onlyNos(event,this)"
+					name="serviceTime" required="required"></td>
+			</tr>
+			<tr>
+				<td><input type="text" placeholder="Service Cost"
+				      onkeypress="return onlyNos(event,this)"
+					name="serviceCost" required="required"></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Add Service !!"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

@@ -1,0 +1,5 @@
+				ApplicationContext context = new ClassPathXmlApplicationContext("com/full/xml/Spring_beans_config.xml");
+				UserInfoBean userInfo = (UserInfoBean)context.getBean("userDetails");
+				userInfo.setEmail(user.getEmail());
+				userInfo.setName(user.getName());
+				userInfo.setFamily_name(user.getFamily_name());

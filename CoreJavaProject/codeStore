@@ -1,0 +1,106 @@
+	// Hash-Map insider technique
+		int size=details.size();
+		if(size==0)
+		{
+			System.out.println("No products found");
+		}
+		else{
+		for (Map.Entry<String, ProductDetails> entry : details.entrySet()) {
+			ProductDetails show = entry.getValue();
+			System.out.println("PRODUCT NAME : " + show.getProductName());
+			System.out.println("PRODUCT PRICE : " + show.getProductPrice());
+			System.out.println("PRODUCT DISCOUNT : " + show.getProductDiscount());
+			System.out.println("PRODUCT FINAL PRICE : " + show.getFinalPrice());
+			System.out.println("----------------");
+		}}
+		
+		
+	//Ascending order
+			TreeMap<String, ProductDetails> sortAscending = new TreeMap<>(details);
+		System.out.println(sortAscending);
+		for (Map.Entry<String, ProductDetails> entry : sortAscending.entrySet()) {
+			ProductDetails show = entry.getValue();
+			System.out.println("PRODUCT NAME : " + show.getProductName());
+			System.out.println("PRODUCT PRICE : " + show.getProductPrice());
+			System.out.println("PRODUCT DISCOUNT : " + show.getProductDiscount());
+			System.out.println("PRODUCT FINAL PRICE : " + show.getFinalPrice());
+			System.out.println("----------------");
+		}
+	
+   //Descending order
+   
+	class SortByDiscount1 implements Comparator<ProductDetails>{
+
+	@Override
+	public int compare(ProductDetails o1,ProductDetails o2) {
+		 ProductDetails productDetails=new ProductDetails();
+		 ProductDetails productDetails1=new ProductDetails();
+		
+		
+			
+		return productDetails.getProductDiscount()-productDetails1.getProductDiscount();
+	}
+
+	
+
+}
+class SortByDiscount implements Comparator<Map<String, ProductDetails>>{
+
+	@Override
+	public int compare(Map<String, ProductDetails> o1, Map<String, ProductDetails> o2) {
+		 ProductDetails productDetails=new ProductDetails();
+		 ProductDetails productDetails1=new ProductDetails();
+		Iterator<ProductDetails> it= o1.values().iterator();
+		Iterator<ProductDetails> it1= o2.values().iterator();
+		while(it.hasNext()){
+			productDetails=it.next();
+		}
+		while(it1.hasNext()){
+			productDetails1=it.next();
+		}
+			
+		return productDetails.getProductDiscount()-productDetails1.getProductDiscount();
+	}
+
+	
+
+}
+		System.out.println("Enter the Product Name you want order");
+		String orderProduct=new Scanner(System.in).nextLine();
+		System.out.println("Enter the Quantity");
+		int orderQuantity=new Scanner(System.in).nextInt();
+		ProductDetails orderDetails=new ProductDetails();
+		orderDetails=details.get(orderProduct);
+		int total=orderQuantity*(orderDetails.getFinalPrice());
+		bd.setOrderProduct(orderProduct);
+		bd.setOrderQuantity(orderQuantity);
+		bd.setTotalProductprice(total);
+		bill.add(bd);
+		
+				CustomerDetails cd=new CustomerDetails();
+		System.out.println("Enter the Customer Name");
+		cd.setUserName(new Scanner(System.in).nextLine());
+		System.out.println("Enter Phone Number");
+		cd.setPhoneNumber(new Scanner(System.in).nextLine());
+		cd.setBillNo(cd.getBillNo());
+		sortByDiscount();
+		boolean a;
+		do
+		{
+		System.out.println("Enter the Product Name you want order");
+		String orderProduct=new Scanner(System.in).nextLine();
+		System.out.println("Enter the Quantity");
+		int orderQuantity=new Scanner(System.in).nextInt();
+		ProductDetails orderDetails=new ProductDetails();
+		orderDetails=details.get(orderProduct);
+		int total=orderQuantity*(orderDetails.getFinalPrice());
+		bd.setOrderProduct(orderProduct);
+		bd.setOrderQuantity(orderQuantity);
+		bd.setTotalProductprice(total);
+		bill.add(bd);
+		System.out.println("do you want to continue");
+		a=new Scanner(System.in).nextBoolean();
+		}
+		while(a==true);
+	
+	}

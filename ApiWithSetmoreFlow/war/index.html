@@ -1,0 +1,281 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- The HTML 4.01 Transitional DOCTYPE declaration-->
+<!-- above set at the top of the file will set     -->
+<!-- the browser's rendering engine into           -->
+<!-- "Quirks Mode". Replacing this declaration     -->
+<!-- with a "Standards Mode" doctype is supported, -->
+<!-- but may lead to some differences in layout.   -->
+
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Hello App Engine</title>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.2/underscore-min.js"
+	type="text/javascript"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"
+	type="text/javascript"></script>
+<script type="text/javascript" src="CallUrls.js"></script>
+<script type="text/javascript" src="CallUrls.js">
+	hitcall();
+</script>
+<style>
+header {
+	padding: 1em;
+	color: white;
+	background-color: #000000;
+	clear: left;
+	text-align: center;
+	font-stretch: 12;
+	height: 55px;
+	font-stretch: 12;
+}
+
+aside {
+	position: relative;
+	float: left;
+	width: 18%;
+	left: 10px;
+	height: 555px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-right: 5px;
+	margin-left: -10px;
+}
+
+#main {
+	position: relative;
+	left: 15px;
+	float: left;
+	height: 400px;
+	width: 60%;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-right: 10px;
+	margin-left: 5px;
+}
+
+#one {
+	position: relative;
+	height: 60px;
+}
+
+#two {
+	position: relative;
+	height: 100px;
+	margin-top: 1px;
+	margin-bottom: 1px;
+	margin-right: 1px;
+	margin-left: 1px;
+}
+
+article {
+	position: relative;
+	float: right;
+	width: 20%;
+	left: 10px;
+	height: 555px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-right: 10px;
+	margin-left: 5px;
+}
+
+.sideA {
+	border: 1px solid black;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.sideA tr {
+	text-align: center;
+	padding: 8px;
+	color: #bec2c6;
+}
+
+.sideA th {
+	text-align: center;
+	padding: 8px;
+	color: #bec2c6;
+}
+
+.sideA th:hover {
+	background-color: #e8eef7;
+	color: black;
+}
+
+div.showStaff:hover {
+	border: 1px solid black;
+	outline-color: black;
+}
+
+#set {
+	text-align: left;
+	margin: 10px;
+}
+
+.mainTable {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.mainTable tr {
+	text-align: center;
+	padding: 8px;
+	color: #bec2c6;
+}
+
+.mainTable th {
+	text-align: center;
+	padding: 8px;
+	color: #585d66;
+}
+
+.mainTable tr:hover th {
+	background-color: #e8eef7;
+	color: red;
+}
+
+.mainTable td {
+	text-align: center;
+	padding: 8px;
+	color: #000000;
+	font-weight: 700;
+	border-bottom: 1px solid black;
+}
+
+#sub1 {
+	float: left;
+	width: 50%;
+	height: 350px;
+	width: 50%;
+}
+
+#sub2 {
+	float: left;
+	height: 350px;
+	width: 50%;
+}
+
+.style {
+	width: 50%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+input[type=button] {
+	width: relative;
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+input[type=button]:hover {
+	background-color: #45a049;
+}
+
+#progress {
+	padding: 0.2px;
+	width: 100%;
+}
+
+.span {
+	font-weight: 60%;
+	padding: 20px;
+}
+
+.timings td {
+	padding-right: 0px;
+}
+
+.progress {
+	height: 5px;
+	width: 65%;
+}
+</style>
+</head>
+<body onLoad="hitcall()">
+	<header> <img src="SetmoreIcon.png" height="48" width="48"
+		align="left" />
+	<h1 id="set">&nbsp; Setmore</h1>
+	</header>
+	<aside> <br>
+	<br>
+	<br>
+	<center>
+		<table class="sideA">
+			<tr>
+				<th><img src="SetmoreIcon.png" height="200" width="200" /></th>
+			</tr>
+			<tr>
+				<th onclick="showServices()">Book Appointments</th>
+			</tr>
+			<tr>
+				<th onclick="showStaff()">Staff Members</th>
+			</tr>
+			<tr>
+				<th onclick="showServices()">Services</th>
+			</tr>
+			<tr>
+				<th onclick="review()">Reviews</th>
+			</tr>
+		</table>
+	</center>
+	</aside>
+	<article>
+	<table><br><br><br>
+			<tr><th>Mon</th>
+			<td>8:00 AM - 5:00 PM</td></tr>
+			<tr><th>Tue</th>
+			<td>8:00 AM - 5:00 PM</td></tr>
+			<tr><th>Wed</th>
+			<td>8:00 AM - 5:00 PM</td></tr>
+			<tr><th>Thu</th>
+			<td>8:00 AM - 5:00 PM</td></tr>
+			<tr><th>Fri</th>
+			<td>8:00 AM - 5:00 PM</td></tr>
+			<tr><th>Sat</th>
+			<td>closed</td></tr>
+			<tr><th>Sun</th>
+			<td>closed</td></tr>
+	</table>
+	</article>
+	<div id="main">
+		<div id="one">
+			<h2>Company Name</h2>
+		</div>
+		<div id="two">
+			<h4>
+				<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<span class="span" id="span_service"
+					style='opacity: 0.5; pointer-events: none;'
+					onclick="generateServicesBySpan()">SERVICE</span> <span
+					class="span" id="span_provider"
+					style="opacity: 0.5; pointer-events: none;"
+					onclick="generateStaffByServiceTospan()">PROVIDER</span> <span
+					class="span" id="span_time"
+					style='opacity: 0.5; pointer-events: none;'
+					onclick="generateTimeBySpan()">TIME</span> <span class="span"
+					id="span_info" style='opacity: 0.5; pointer-events: none;'
+					onclick="enterDetailsBySpan()">YOUR INFO</span> <span class="span"
+					id="span_confirm" style='opacity: 0.5; pointer-events: none;'
+					onclick="">CONFIRM</span>
+			</h4>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<progress value="00" max="100" id="change" class="progress">
+			</progress>
+		</div>
+		<div id="three"></div>
+	</div>
+</body>
+</html>

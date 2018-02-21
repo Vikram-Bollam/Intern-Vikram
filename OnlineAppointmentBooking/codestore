@@ -1,0 +1,136 @@
+PrintWriter out = resp.getWriter();
+		String userid = (String) req.getSession(false).getAttribute("userSession");
+		System.out.println(userid);
+		String date = req.getParameter("date");
+		System.out.println(date);
+		String unique = userid.concat(date);
+		System.out.println(unique);
+		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
+		Key k = KeyFactory.createKey("Slots", unique);
+		try {
+			Entity caught = ds.get(k);
+			ArrayList<Long> time = new ArrayList<>();
+			time = (ArrayList<Long>) caught.getProperty("AvaliableTime");
+			out.println("Avaliable Time : <select name='time'>");
+			for (Long v : time) {
+				String t = Conversion.milliToDate(v, "HH:mm");
+				out.println("<option value='" + t + "'>" + t + "</option>");
+			}
+
+		} catch (EntityNotFoundException e) {
+			System.out.println("catch");
+			ArrayList<Long> avaliableTime = new ArrayList<>();
+			Long openMilli = Conversion.dateToMilli(date.concat(" " + "8:00"), "yyyy-MM-dd HH:mm");
+			Long closeMilli = Conversion.dateToMilli(date.concat(" " + "12:00"), "yyyy-MM-dd HH:mm");
+			System.out.println(openMilli + " " + closeMilli);
+			avaliableTime.add(openMilli);
+			while (openMilli < closeMilli) {
+				openMilli = openMilli + (30 * 60 * 1000);
+				avaliableTime.add(openMilli);
+			}
+			out.println("Avaliable Time : <select name='time'>");
+			for (Long v : avaliableTime) {
+				String t = Conversion.milliToDate(v, "HH:mm");
+				out.println("<option value='" + t + "'>" + t + "</option>");
+				System.out.println(t);
+			}
+			
+			---------------------------------------------------------------------------
+			---------------------------------------------------------------------------
+			---------------------------------------------------------------------------package full.aw.service;
+import java.util.ArrayList;
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.EntityNotFoundException;
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
+
+import full.aw.helper.Conversion;
+
+public class BookSchedule {
+	static DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
+	@SuppressWarnings("unchecked")
+	public String bookSchedule(String userid,String custName,String custEmail,String date,String time)
+	{
+		String unique=userid.concat(date);
+		try {
+			Key k = KeyFactory.createKey("Slots", unique);
+			Entity caught=ds.get(k);
+			ArrayList<Long> a=new ArrayList<>();
+			ArrayList<Long> b=new ArrayList<>();
+			Long bookTime=Conversion.dateToMilli(date.concat(" "+time) , "yyyy-MM-dd HH:mm");
+			a=(ArrayList<Long>)caught.getProperty("AvaliableTime");
+			a.remove(bookTime);
+			b=(ArrayList<Long>)caught.getProperty("BookedTime");
+			b.add(bookTime);
+			caught.setProperty("AvaliableTime", a);
+			caught.setProperty("BookedTime", b);
+			ds.put(caught);
+			Entity booking=new Entity("AppTable");
+			booking.setProperty("UserId", userid);
+			booking.setProperty("CustomerName", custName);
+			booking.setProperty("Email",custEmail);
+			booking.setProperty("Date", date);
+			booking.setProperty("Time", bookTime);
+			ds.put(booking);
+			return "entity updated!!";
+		} catch (EntityNotFoundException e) {
+			System.out.println("Entity Not Found");
+			Entity  slot= new Entity("Slots", unique);
+			slot.setProperty("Id", unique);
+			slot.setProperty("UserId", userid);
+			slot.setProperty("Date", date);
+			ArrayList<Long> avaliableTime=new ArrayList<>();
+			ArrayList<Long> bookedTime=new ArrayList<>();
+			Long openMilli=Conversion.dateToMilli(date.concat(" "+"8:00"), "yyyy-MM-dd HH:mm");
+			Long closeMilli=Conversion.dateToMilli(date.concat(" " +"12:00"), "yyyy-MM-dd HH:mm");
+			System.out.println(openMilli+" "+closeMilli);
+			avaliableTime.add(openMilli);
+			while(openMilli<closeMilli)
+			{
+			    openMilli=openMilli+(30*60*1000);
+			    avaliableTime.add(openMilli);
+			}
+			Long bookTime=Conversion.dateToMilli(date.concat(" "+time), "yyyy-MM-dd HH:mm");
+			avaliableTime.remove(bookTime);
+			bookedTime.add(bookTime);	
+			slot.setProperty("AvaliableTime" , avaliableTime);
+			slot.setProperty("BookedTime" , bookedTime);
+			ds.put(slot);
+			System.out.println("Your app is booked at : " +Conversion.milliToDate(bookTime, "yyyy-MM-dd HH:mm"));
+			Entity booking=new Entity("AppTable");
+			booking.setProperty("UserId", userid);
+			booking.setProperty("CustomerName", custName);
+			booking.setProperty("Email",custEmail);
+			booking.setProperty("Date", date);
+			booking.setProperty("Time", bookTime);
+			ds.put(booking);
+			return "Entity Created and Updated!!";
+		}
+	}
+}
+-------------------------------------------------------------------------------------
+	   String email=(String)e.getProperty("CustomerEmail");
+	   String name=(String)e.getProperty("CustomerName");
+	   String date=(String)e.getProperty("Date");
+	   String servicName=(String)e.getProperty("ServiceName");
+	   Long sTime=(Long)e.getProperty("StartTime")
+		
+		<td><input type="button" value="Update" id="<%= count%>" onclick="updateDetails(this.id)"/></td>	
+		
+		--------------------------------------------------------------------------
+		
+		<%
+System.out.println(request.getParameter("custName"));
+System.out.println(request.getParameter("custEmail"));
+System.out.println(request.getParameter("custDate"));
+System.out.println(request.getParameter("custTime"));
+System.out.println(request.getParameter("custSevice"));
+System.out.println(request.getParameter("key"));
+
+%>
+--------------------------------------------------------------
+		<tr>
+			<td><a href="index.html">Forget Password ?</a></td>
+		</tr>

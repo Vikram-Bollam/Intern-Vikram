@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries>
+<cron>
+<url>/CornDemo</url>
+<schedule>every 48 hours</schedule>
+</cron>
+<cron>
+<url>/SendRemainder</url>
+<schedule>every 30 minutes</schedule>
+</cron>
+</cronentries>
